@@ -1,0 +1,1 @@
+apple    big  small        number little    little
