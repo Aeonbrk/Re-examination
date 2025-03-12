@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /**
  * @brief 判断小括号是否匹配
  *
@@ -13,7 +15,7 @@ int isMarry(const char *str) {
   // 遍历输入字符串中的每个字符
   while (*str) {
     if (*str == '(') {
-      ++top;  // 遇到左括号，入栈
+      top++;  // 遇到左括号，入栈
     } else if (*str == ')') {
       if (top == -1) return -1;  // 遇到右括号但栈为空，说明右括号多了
       top--;                     // 遇到右括号，出栈
@@ -36,11 +38,12 @@ void Sort(char *parr[], int n) {
 
   // 冒泡排序
   for (i = 0; i < n - 1; i++) {
-    for (j = i + 1; j < n; j++) {  // 修正 j <= n-1 为 j < n
-      char *str1 = parr[i];        // 获取两个待比较字符串
+    for (j = i + 1; j < n; j++) {
+      char *str1 = parr[i];  // 获取两个待比较字符串
       char *str2 = parr[j];
 
       // 跳过两个字符串的共同前缀
+      // 如果都跳过了就不交换了呗
       while (*str1 && *str2 && *str1 == *str2) {
         str1++;
         str2++;
@@ -90,4 +93,9 @@ void testStringSorting() {
   for (int i = 0; i < n; i++) {
     printf("%s\n", strings[i]);
   }
+}
+
+int main() {
+  testBracketMatching();
+  testStringSorting();
 }

@@ -17,6 +17,7 @@ int partion(int arr[], int n) {
     }
   }
   // 将基准元素放到最终位置
+  // 交换
   temp = arr[i];
   arr[i] = arr[pos];
   arr[pos] = temp;

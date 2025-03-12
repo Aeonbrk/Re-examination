@@ -152,3 +152,39 @@ void freeList(node *L) {
     p = temp;
   }
 }
+
+int main() {
+  // 创建两个带头结点的链表
+  node *La = createList();
+  node *Lb = createList();
+
+  // 向链表La中插入一些节点
+  La->next = createNode(1);
+  La->next->next = createNode(3);
+  La->next->next->next = createNode(5);
+
+  // 向链表Lb中插入一些节点
+  Lb->next = createNode(2);
+  Lb->next->next = createNode(4);
+  Lb->next->next->next = createNode(6);
+
+  // 打印链表La和Lb
+  printf("Before operations:\n");
+  printList(La);
+  printList(Lb);
+
+  // 删除链表La中的最小值节点
+  delmin(La);
+  printf("\nAfter deleting the minimum node in La:\n");
+  printList(La);
+
+  // 合并链表La和Lb
+  node *mergedList = Union(La, Lb);
+  printf("\nAfter merging La and Lb:\n");
+  printList(mergedList);
+
+  // 释放链表内存
+  freeList(mergedList);
+
+  return 0;
+}

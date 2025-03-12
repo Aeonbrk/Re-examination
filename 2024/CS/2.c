@@ -4,60 +4,6 @@
  * 和字母），例如：****A**B**C*****，输出 ****ABC*****
  */
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
-
-// #define MAX_WORD_LENGTH 100
-
-// // Function to check if the input string contains only letters and asterisks
-// int inputCheck(char* str, int* num) {
-//   for (int i = 0; str[i] != '\0'; i++) {
-//     if (!((str[i] >= 'a' && str[i] <= 'z') ||
-//           (str[i] >= 'A' && str[i] <= 'Z') || (str[i] == '*'))) {
-//       return 0;  // Return 0 if an invalid character is found
-//     }
-//     *num++;
-//   }
-//   return 1;  // Return 1 if the string is valid
-// }
-
-// char* removeMidStar(char* str, int num) {
-//   char* str_alt[MAX_WORD_LENGTH];
-//   int cur = num;
-//   for (int i = 0; i < strlen(str); i++) {
-//     if (str[i] == '*' && (cur == num || cur == 0)) {
-//       strncpy(str_alt[i], str[i], 1);
-//       continue;
-//     } else if (str[i] != '*') {
-//       strncpy(str_alt[i], str[i], 1);
-//       cur--;
-//     }
-//   }
-//   return str_alt;
-// }
-
-// int main() {
-//   char* inputStr[MAX_WORD_LENGTH];
-//   int num_char = 0;
-//   printf("Please input the required string: ");
-//   fgets(inputStr, sizeof(inputStr),
-//         stdin);  // Use fgets instead of gets for safety
-
-//   // Remove the newline character if present
-//   inputStr[strcspn(inputStr, "\n")] = '\0';
-
-//   if (!inputCheck(inputStr, &num_char)) {
-//     printf("error!\n");
-//     return 1;
-//   } else {
-//     removeMidStar(inputStr, num_char);
-//     printf("Processed string: %s\n", inputStr);
-//   }
-
-//   return 0;
-// }
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -85,16 +31,19 @@ char* removeMidStar(char* str, int num) {
   int lastStar = 0;   // 标记是否遇到最后一个星号
 
   // 保留开头的星号
+  // 从前往后
   for (int i = 0; i < num; i++) {
     if (str[i] == '*' && firstStar) {
       str_alt[j++] = str[i];
     } else if (str[i] != '*') {
-      firstStar = 0;  // 遇到字母后，不再保留中间的星号
+      // 遇到字母后，不再保留中间的星号
+      firstStar = 0;
       str_alt[j++] = str[i];
     }
   }
 
   // 保留结尾的星号
+  // 从后往前
   for (int i = num - 1; i >= 0; i--) {
     if (str[i] == '*') {
       str_alt[j++] = str[i];
@@ -104,6 +53,7 @@ char* removeMidStar(char* str, int num) {
     }
   }
 
+  // 这个不能忘记
   str_alt[j] = '\0';  // 字符串结束符
   return str_alt;
 }

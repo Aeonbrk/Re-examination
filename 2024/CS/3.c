@@ -13,6 +13,7 @@ typedef struct LinkedList {
 
 // 冒泡排序函数
 void BubbleSort(LinkedList* L) {
+  // 特殊情况 handler
   if (L == NULL || L->next == NULL) {
     return;  // 如果链表为空或只有一个节点，直接返回
   }
@@ -28,6 +29,7 @@ void BubbleSort(LinkedList* L) {
     move = L;      // 从头节点开始遍历
 
     // 遍历链表，比较相邻节点的值并交换
+    // 条件原因是 -> bubblesort每一轮都有一个最大的“冒”到最后
     while (move->next != lastSorted) {
       if (move->data > move->next->data) {
         // 交换相邻节点的数据
@@ -63,6 +65,7 @@ LinkedList* CreateNode(int data) {
 // 释放链表内存
 void FreeList(LinkedList* L) {
   LinkedList* tmp;
+  // 遍历 free
   while (L != NULL) {
     tmp = L;      // 保存当前节点
     L = L->next;  // 移动到下一个节点

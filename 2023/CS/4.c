@@ -47,9 +47,9 @@ LinkedList* liftToHead(LinkedList* cur, LinkedList* pre, LinkedList* L) {
 }
 
 /* 处理所有移动操作并更新链表 */
-void changeList(LinkedList** L_ptr, int index[], int num) {
+void changeList(LinkedList* L_ptr, int index[], int num) {
   for (int i = 0; i < num; i++) {
-    LinkedList* current = *L_ptr;
+    LinkedList* current = L_ptr;
     LinkedList* pre = NULL;
 
     // 遍历查找目标节点
@@ -59,8 +59,8 @@ void changeList(LinkedList** L_ptr, int index[], int num) {
     }
 
     if (current != NULL) {  // 找到目标节点时更新链表
-      *L_ptr = liftToHead(current, pre, *L_ptr);
-      PrintList(*L_ptr);  // 打印每次移动后的链表状态
+      L_ptr = liftToHead(current, pre, L_ptr);
+      PrintList(L_ptr);  // 打印每次移动后的链表状态
     }
   }
 }
@@ -119,7 +119,7 @@ int main() {
   }
 
   // 执行链表操作
-  changeList(&L, elements, counter);
+  changeList(L, elements, counter);
 
   // 释放所有内存
   FreeList(L);

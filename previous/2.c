@@ -56,5 +56,9 @@ int main() {
   int arr5[] = {4, 5, 6, 7, 0, 1, 2};
   printf("Test5: %d\n", findMin(arr5, 7));  // 应输出0
 
+  // 测试用例6：重复数组
+  int arr6[] = {4, 4, 6, 7, 0, 1, 1};
+  printf("Test6: %d\n", findMin(arr5, 7));  // 应输出0
+
   return 0;
 }

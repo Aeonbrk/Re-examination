@@ -51,7 +51,7 @@ void init() {
     // 读入数据
     // 如果成功，fscanf 返回成功读取并匹配的输入项的数量。
     // 如果到达文件末尾或发生读取错误，返回 EOF。
-    // sscanf 类似，但是读入对象变为字符串
+    // sscanf 类似，但是读入对象变为字符串 -> 自己跳过空格
     if (sscanf(line, "%s %s %d", students[count].name, students[count].ID,
                &students[count].score) == 3) {
       count++;
@@ -66,6 +66,7 @@ void init() {
 }
 
 // 数组类型的冒泡排序，和2024（3）结合着看
+// 这个就是传统的双循环冒泡
 void bubbleSort() {
   for (int i = 0; i < count - 1; i++) {
     for (int j = 0; j < count - i - 1; j++) {
@@ -83,6 +84,7 @@ void binarySearch(int targetScore) {
   int left = 0, right = count - 1;
   while (left <= right) {
     // #include math.h
+    // 或者是 left + (right - left) / 2
     int mid = floor(left + right) / 2;
     if (students[mid].score == targetScore) {
       printf("Found student: %s %s %d\n", students[mid].name, students[mid].ID,

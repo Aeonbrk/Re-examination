@@ -77,7 +77,6 @@ int main() {
   fgets(str, sizeof(str), stdin);
 
   // strtok 将字符串分割成多个子字符串
-  //
   char *token = strtok(str, " ");
   while (token != NULL) {
     // 判断是否为浮点数

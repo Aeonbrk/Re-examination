@@ -26,6 +26,7 @@
 // 4 70
 
 // 就是最短路径的变体
+// 使用Dijkstra算法
 
 #include <stdbool.h>  // 使用标准布尔类型
 #include <stdio.h>
@@ -105,7 +106,6 @@ int main() {
   printf("\n");
 
   // 遍历每个动物作为起点，计算其到其他动物的最短路径
-  // 如果使用Floyd的话一次结束，但是代码实现困难，不划算
   for (int current_animal = 1; current_animal <= n; current_animal++) {
     dijkstra(current_animal);
 
