@@ -149,6 +149,7 @@ node* intersectionNoHead(node* L1, node* L2) {
 
     // 在L2中查找当前L1节点的值
     while (L2_cur != NULL) {
+      // p1 一直多一个 dummy 节点
       if (p1->next->data == L2_cur->data) {
         found = 1;
         break;
